@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard - Traffic Analytics</title>
+<meta http-equiv="refresh" content="5">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:20px}
+.stat{background:#1e293b;padding:20px;border-radius:12px;display:inline-block;margin:10px;min-width:150px;text-align:center}
+.card{background:#1e293b;padding:15px;border-radius:12px;margin:10px}
+.high{color:#ef4444} .medium{color:#f59e0b} .low{color:#22c55e}
+a{color:#38bdf8;text-decoration:none;background:#1e293b;padding:10px 20px;border-radius:8px}
+</style>
+</head>
+<body>
+<h1>📊 Traffic Analytics Dashboard</h1>
+<a href="/">Back to Live View</a>
+<div>
+<div class="stat"><h2>{{ total }}</h2><p>Total Vehicles (Live)</p></div>
+<div class="stat"><h2>{{ avg }} km/h</h2><p>Average Speed</p></div>
+<div class="stat"><h2>{{ high }}</h2><p>High Congestion Zones</p></div>
+</div>
+<h2>Junction Wise Report</h2>
+{% for j in junctions %}
+<div class="card">
+<b>{{ j.name }}</b> - <span class="{{ j.congestion|lower }}">{{ j.congestion }}</span> | Vehicles: {{ j.vehicles }} | Action: {{ j.action }}
+</div>
+{% endfor %}
+</body>
+</html>
