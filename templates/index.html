@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Traffic Management - Live</title>
+<meta http-equiv="refresh" content="5">
+<style>
+body{font-family:Arial;background:#0f172a;color:white;padding:20px}
+.card{background:#1e293b;padding:15px;border-radius:12px;margin:10px;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.high{border-left:6px solid #ef4444} .medium{border-left:6px solid #f59e0b} .low{border-left:6px solid #22c55e}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+h1{color:#38bdf8}
+a{color:#38bdf8;text-decoration:none;background:#1e293b;padding:10px 20px;border-radius:8px}
+</style>
+</head>
+<body>
+<h1>🚦 Cloud-Based Traffic Management - Hyderabad LIVE</h1>
+<a href="/dashboard">Go to Dashboard 📊</a> <a href="/api/traffic">API View</a>
+<p>Auto-refreshing every 5 seconds | Mock IoT Sensors Active</p>
+<div class="grid">
+{% for j in junctions %}
+<div class="card {{ j.congestion|lower }}">
+<h3>{{ j.name }}</h3>
+<p>Area: {{ j.area }}</p>
+<p>Vehicles: <b>{{ j.vehicles }}</b> | Speed: {{ j.speed }} km/h</p>
+<p>Congestion: <b>{{ j.congestion }}</b> | Signal: {{ j.signal }}</p>
+<p>Action: {{ j.action }}</p>
+<small>Last Update: {{ j.timestamp }}</small>
+</div>
+{% endfor %}
+</div>
+</body>
+</html>
